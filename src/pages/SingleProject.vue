@@ -2,7 +2,7 @@
     <section v-if="project">
         <h1>{{ project.title }}</h1>
         <img :src="`${store.imagBasePath}${project.cover_image}`" class="card-img-top" :alt="project.title">
-        <p>{{ project.content }}</p>
+        <p v-html="project.content"></p>
         <div v-if="project.category">
             <h5>Category: {{ project.category.name }}</h5>
         </div>

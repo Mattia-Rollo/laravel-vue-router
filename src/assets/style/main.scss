@@ -6,9 +6,12 @@ $fa-font-path: '../webfonts';
 
 @import 'bootstrap/scss/bootstrap';
 
-.router-link-active, .router-link-exact-active, .active {
+.router-link-active, .router-link-exact-active {
     color: #ff0000  !important;
 }
 // body{
 //     background-color: bisque;
 // }
+.cursor-poiner{
+    cursor: pointer;
+}
