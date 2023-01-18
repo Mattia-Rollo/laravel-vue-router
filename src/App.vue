@@ -1,34 +1,21 @@
 <template>
-  <header>
-    <NavBar></NavBar>
-    <!-- <router-view></router-view> -->
-  </header>
-
-  <main>
-
+  <AppHeader></AppHeader>
+  <main class="container">
+    <router-view></router-view>
   </main>
+
 </template>
-
 <script>
-
-import NavBar from './components/NavBar.vue';
-
+import AppHeader from './components/HeaderComponent.vue';
 export default {
   name: 'App',
-  components: { NavBar },
-  data() {
-    return {
-
-    }
+  components: {
+    AppHeader
   }
+
 }
-
-
-
 </script>
 
-
-
-<style scoped>
+<style lang="scss" scoped>
 
 </style>

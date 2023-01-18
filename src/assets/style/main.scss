@@ -1,6 +1,14 @@
-$fa-font-path: './webfonts';
+@use './partials/variables' as *;
+
+$fa-font-path: '../webfonts';
 @import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '@fortawesome/fontawesome-free/scss/solid.scss';
 
- @import 'bootstrap/scss/bootstrap'; 
+@import 'bootstrap/scss/bootstrap';
 
+.router-link-active, .router-link-exact-active, .active {
+    color: #ff0000  !important;
+}
+// body{
+//     background-color: bisque;
+// }
