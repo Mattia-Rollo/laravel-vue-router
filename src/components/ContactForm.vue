@@ -7,26 +7,27 @@
                     Messaggio inviato con successo!
                 </div>
                 <div class="row">
-                    <form class="col-12 text-start" @submit.prevent="sendForm()">
+                    <form class="col-12 text-start needs-validation" novalidate @submit.prevent="sendForm()">
                         <div class="mb-3">
-                            <input class="border-0 border-bottom form-control" type="text" name="name" id="name"
-                                placeholder="Name" v-model="name" :class="{ 'is-invalid': errors.name }" required>
+                            <input class="form-control " type="text" name="name" id="name" placeholder="Name"
+                                v-model="name" :class="{ 'is-invalid': errors.name }">
+                            <p v-if="!errors" class="valid-feedback">Bravo</p>
                             <p v-for="(error, index) in errors.name" :key="index" class="invalid-feedback">
                                 {{ error }}
                             </p>
                         </div>
                         <div class="mb-3">
-                            <input class="border-0 border-bottom form-control" type="text" name="email" id="email"
-                                placeholder="Email" v-model="email" :class="{ 'is-invalid': errors.email }" required>
+                            <input class="form-control" type="text" name="email" id="email" placeholder="Email"
+                                v-model="email" :class="{ 'is-invalid': errors.email }">
                             <p v-for="(error, index) in errors.email" :key="index" class="invalid-feedback">
                                 {{ error }}
                             </p>
 
                         </div>
                         <div class="mb-3">
-                            <textarea class="border-0 border-bottom form-control" name="message" id="message" cols="30"
-                                rows="10" placeholder="Message" v-model="message"
-                                :class="{ 'is-invalid': errors.message }" required></textarea>
+                            <textarea class="form-control" name="message" id="message" cols="30" rows="10"
+                                placeholder="Message" v-model="message"
+                                :class="{ 'is-invalid': errors.message }"></textarea>
                             <p v-for="(error, index) in errors.message" :key="index" class="invalid-feedback">
                                 {{ error }}
                             </p>
