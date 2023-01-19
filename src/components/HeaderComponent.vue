@@ -93,16 +93,16 @@ export default {
 <style lang="scss" scoped>
 @use '../assets/style/partials/variables' as *;
 
-// a {
+a {
 
-//     margin: 0 0.5rem;
-//     border-radius: 0.3rem;
-// }
+    margin: 0 0.5rem;
+    border-radius: 0.3rem;
+}
 
-// a:hover:not(.navbar-brand) {
-//     background-color: $button;
-//     color: $headline;
-// }
+a:hover:not(.navbar-brand) {
+    background-color: $button;
+    // color: $headline;
+}
 
 .bd-placeholder-img {
     font-size: 1.125rem;
@@ -161,7 +161,7 @@ export default {
 //     background-color: $main;
 // }
 
-// i {
-//     font-size: 3.2rem;
-// }
+i {
+    font-size: 3.2rem;
+}
 </style>

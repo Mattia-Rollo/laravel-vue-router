@@ -114,9 +114,9 @@ export default {
 <style lang="scss" scoped>
 @use '../assets/style/partials/variables' as *;
 
-.page-link {
-    background-color: $paragraph;
-}
+// .page-link {
+//     background-color: $paragraph;
+// }
 
 
 
@@ -135,7 +135,7 @@ export default {
 
 .card {
 
-    background-color: $main;
+    // background-color: $main;
     transition: all 0.35s;
     cursor: pointer;
 }

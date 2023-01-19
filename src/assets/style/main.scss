@@ -6,7 +6,7 @@ $fa-font-path: "./webfonts";
 @import "@fortawesome/fontawesome-free/scss/regular.scss";
 
 
-$background:  #3b309f;
+$background:  #cccccc;
 $headline: #fffffe;
 $paragraph: #b8c1ec;
 $button: #eebbc3;
@@ -32,16 +32,15 @@ $tertiary: #eebbc3;
 // h1{
 //   color: $headline;
 // }
-.router-link-active,
-.router-link-exact-active{
-  transition: all 0.5s;
-}
 
-.router-link-active,
+
+a.nav-link:hover{
+  color: $headline;
+}
 .router-link-exact-active {
-  font-weight: 700;
-  background-color: $button;
-  color: $headline !important;
+  // font-weight: 700;
+  // background-color: $button;
+  color: $main !important;
   transition: color 1s, font-weight 0.3s;
 }
 // body{
@@ -56,9 +55,9 @@ $tertiary: #eebbc3;
 /* Padding below the footer and lighter body text */
 
 body {
-  padding-top: 3rem;
+  // background-color: $background;
   padding-bottom: 3rem;
-  color: #5a5a5a;
+  // color: #5a5a5a;
 }
 
 
