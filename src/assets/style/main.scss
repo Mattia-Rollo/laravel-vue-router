@@ -1,17 +1,20 @@
-@use './partials/variables' as *;
+@use "./partials/variables" as *;
 
-$fa-font-path: '../webfonts';
-@import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
-@import '@fortawesome/fontawesome-free/scss/solid.scss';
+$fa-font-path: "../webfonts";
+@import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "@fortawesome/fontawesome-free/scss/solid.scss";
 
-@import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/bootstrap";
 
-.router-link-active, .router-link-exact-active {
-    color: #ff0000  !important;
+.router-link-active,
+.router-link-exact-active {
+  font-weight: 400;
+  color: #ff0000 !important;
+  transition: color 1s, font-weight 0.3s;
 }
 // body{
 //     background-color: bisque;
 // }
-.cursor-poiner{
-    cursor: pointer;
+.cursor-poiner {
+  cursor: pointer;
 }
