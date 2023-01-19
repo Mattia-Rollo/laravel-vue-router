@@ -1,11 +1,6 @@
 <template>
     <section>
-        <div class="container">
 
-            <h1 class="py-2">
-                Contatti Us
-            </h1>
-        </div>
         <ContactForm />
 
     </section>

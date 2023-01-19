@@ -3,7 +3,7 @@
         <Transition>
             <div v-if="projects" class="container d-flex flex-column">
                 <h1 class="py-3">Lista dei project</h1>
-                <div class="row g-3">
+                <div class="row g-3 ">
                     <div class="col-12 col-md-4" v-for="(project, index) in projects" :key="index">
                         <div class="card h-100" style="">
                             <!-- <img :src="project.cover_image ? `${store.imagBasePath}${project.cover_image}` : ''"
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row ">
+                <div class="row mt-auto">
                     <div class="col ">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination cursor-poiner">
@@ -114,5 +114,29 @@ export default {
 .v-enter-from,
 .v-leave-to {
     opacity: 0;
+}
+
+.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    /* number of lines to show */
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.container {
+    height: calc(100vh - 5rem);
 }
 </style>
