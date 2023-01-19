@@ -12,13 +12,15 @@ $paragraph: #b8c1ec;
 $button: #eebbc3;
 $button-text: #232946;
 $stroke: #121629;
-$main: #b8c1ec;
+$main: #7a7f9a;
 $highlight: #eebbc3;
 $secondary: #fffffe;
 $tertiary: #eebbc3;
 
-$border-width: 0.05rem;
+// $border-width: 0.05rem;
 // $border-radius: .2rem;
+$primary: $stroke;
+$light: $highlight;
 
 @import "bootstrap/scss/bootstrap";
 
@@ -28,7 +30,7 @@ body{
   
 }
 h1{
-  color: $main;
+  color: $highlight;
 }
 
 .router-link-active,

@@ -36,14 +36,14 @@
                     </p>
 
                 </div>
-                <div class="col-lg-6 col-12 mx-auto mb-2 position-relative">
+                <div class="col-lg-8 col-12 mx-auto mb-2 position-relative">
                     <textarea class="form-control" name="message" id="message" cols="30" rows="10" placeholder="Message"
                         v-model="message" :class="{ 'is-invalid': errors.message }"></textarea>
                     <p v-for="(error, index) in errors.message" :key="index" class="invalid-tooltip">
                         {{ error }}
                     </p>
                 </div>
-                <div class="col-lg-6 col-12 mx-auto mb-2">
+                <div class="col-lg-8 col-12 mx-auto mb-2">
                     <button class="btn btn-lg btn-primary" type="submit" :disabled="loading">
                         {{ loading == true ? 'Sending...' : 'Send' }}</button>
                 </div>

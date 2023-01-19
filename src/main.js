@@ -1,9 +1,12 @@
 import { createApp } from 'vue'
-import Popper from "vue3-popper";
+
+import FloatingVue from 'floating-vue'
+
+
 
 import { router } from './route.js';
-import App from './App.vue'
-
+import App from './App.vue';
+import 'floating-vue/dist/style.css';
 
 
 import './assets/style/main.scss';
@@ -11,4 +14,4 @@ import './assets/style/main.scss';
 
 
 
-createApp(App).use(router).component("Popper", Popper).mount('#app')
+createApp(App).use(router).use(FloatingVue).mount('#app')

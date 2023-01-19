@@ -2,39 +2,33 @@
     <section>
         <Transition>
             <div v-if="projects" class="container d-flex flex-column">
-                <h1 class="py-3">Lista dei project</h1>
+                <h1 class="py-3">Lista dei Progetti</h1>
                 <div class="row g-3 ">
-                    <div class="col-12 col-md-4" v-for="(project, index) in projects" :key="index">
-                        <div class="card h-100" style="">
+                    <div class="col-12 " :class="[index < 1 ? 'col-md-12 my-min-h' : 'col-md-4 ']"
+                        v-for="(project, index) in projects" :key="index">
+                        <div class="card h-100 shadow" style="">
                             <!-- <img :src="project.cover_image ? `${store.imagBasePath}${project.cover_image}` : ''"
                         class="card-img-top" :alt="project.title"> -->
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">{{ project.title }}</h5>
                                 <p class="card-text" v-html="project.content"></p>
                                 <div class=" mt-auto">
-                                    <Popper arrow hover content="Buona Visione 🍿" placement="right">
-                                        <router-link class="btn btn-primary d-inline"
-                                            :to="{ name: 'single-project', params: { slug: project.slug } }">
-                                            Vedi il project
-                                        </router-link>
-                                    </Popper>
+
+                                    <router-link v-tooltip="'vai alla pagina'" class="btn btn-primary d-inline"
+                                        :to="{ name: 'single-project', params: { slug: project.slug } }">
+                                        Vedi il project
+                                    </router-link>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- <i class="fa-regular fa-user"></i>
-                <i class="fa-regular fa-share-from-square"></i> -->
-                <div class="text-center py-3 d-inline-block">
-                    <Popper arrow hover openDelay="100" closeDelay="100" content="This is the Popper content 🍿">
 
-                        <button class="btn btn-primary">Popper! Provalo! </button>
 
-                    </Popper>
-                </div>
-                <div class="row mt-auto">
-                    <div class="col ">
-                        <nav aria-label="Page navigation example">
+                <div class="row ">
+                    <div class="col py-3">
+                        <nav aria-label="Page navigation">
                             <ul class="pagination cursor-poiner">
                                 <li class="page-item"><a class="page-link" @click="prev(-1)">Previous</a></li>
                                 <li class="page-item" v-for="n in lastPage"><a class="page-link"
@@ -56,7 +50,7 @@
 
 <script>
 import axios from 'axios';
-import Popper from 'vue3-popper';
+
 import { store } from '../store';
 
 export default {
@@ -113,43 +107,42 @@ export default {
     mounted() {
         this.getProjects(1);
     },
-    components: { Popper }
+
 }
 </script>
 
 <style lang="scss" scoped>
 @use '../assets/style/partials/variables' as *;
 
-:deep(.popper) {
-    background: #126497;
-    padding: 20px;
-    border-radius: 20px;
-    color: #fff;
-    font-weight: bold;
-    text-transform: uppercase;
+.page-link {
+    background-color: $paragraph;
 }
 
-:deep(.popper #arrow::before) {
-    background: #126497;
+
+
+// .v-enter-active,
+// .v-leave-active {
+//     transition: opacity 0.5s ease;
+// }
+
+// .v-enter-from,
+// .v-leave-to {
+//     opacity: 0;
+// }
+.my-min-h {
+    min-height: 20rem;
 }
 
-:deep(.popper:hover),
-:deep(.popper:hover > #arrow::before) {
-    background: #279fe9
-}
+.card:not(.my-min-h) {
 
-.v-enter-active,
-.v-leave-active {
-    transition: opacity 0.5s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-    opacity: 0;
-}
-
-.card {
     background-color: $main;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box
 }
 
 .card-text {
@@ -176,6 +169,6 @@ export default {
 }
 
 .container {
-    height: calc(100vh - 5rem);
+    min-height: calc(100vh - 5rem);
 }
 </style>
