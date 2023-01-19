@@ -16,8 +16,10 @@
             </div>
 
             <form class="row gy-4 flex-column text-start needs-validation" novalidate @submit.prevent="sendForm()">
+
                 <div class="col-lg-6 col-12 mx-auto mb-2 position-relative ">
-                    <input class="form-control " type="text" name="name" id="name" placeholder="Name" v-model="name"
+
+                    <input class="form-control" type="text" name="name" id="name" placeholder="Name" v-model="name"
                         :class="{ 'is-invalid': errors.name }" required>
                     <!-- <p class="valid-feedback">Bravo</p> -->
 

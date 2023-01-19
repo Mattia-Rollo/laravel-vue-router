@@ -3,18 +3,38 @@
 $fa-font-path: "./webfonts";
 @import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "@fortawesome/fontawesome-free/scss/solid.scss";
+@import "@fortawesome/fontawesome-free/scss/regular.scss";
 
+
+$background:  #232946;
+$headline: #fffffe;
+$paragraph: #b8c1ec;
+$button: #eebbc3;
+$button-text: #232946;
+$stroke: #121629;
+$main: #b8c1ec;
+$highlight: #eebbc3;
+$secondary: #fffffe;
+$tertiary: #eebbc3;
+
+$border-width: 0.05rem;
+// $border-radius: .2rem;
 
 @import "bootstrap/scss/bootstrap";
 
 body{
-  background-color: darkslategrey;
+  background-color: $background;
+  color: #b8c1ec;
+  
+}
+h1{
+  color: $main;
 }
 
 .router-link-active,
 .router-link-exact-active {
-  font-weight: 400;
-  color: #ff0000 !important;
+  font-weight: 700;
+  color: $headline !important;
   transition: color 1s, font-weight 0.3s;
 }
 // body{

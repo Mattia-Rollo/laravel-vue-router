@@ -1,8 +1,8 @@
 <template>
     <header>
-        <nav class="navbar navbar-expand-lg bg-light">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand " href="#"><i class="fa-solid fa-laptop-code fs-1"></i></a>
+                <a class="navbar-brand " href="#"><i class="fa-solid fa-laptop-code"></i></a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,7 +10,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item" v-for="(item, index) in menuItems" :key="index">
+                        <li class="nav-item fw-bolder" v-for="(item, index) in menuItems" :key="index">
                             <router-link :to="{ name: item.routeName }" active-class="active" class="nav-link">
                                 {{ item.label }}
                             </router-link>
@@ -52,5 +52,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use '../assets/style/partials/variables' as *;
 
+.navbar {
+    background-color: $main;
+}
+
+i {
+    font-size: 3.2rem;
+}
 </style>

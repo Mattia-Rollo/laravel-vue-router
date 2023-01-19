@@ -12,14 +12,25 @@
                                 <h5 class="card-title">{{ project.title }}</h5>
                                 <p class="card-text" v-html="project.content"></p>
                                 <div class=" mt-auto">
-                                    <router-link class="btn btn-primary d-inline"
-                                        :to="{ name: 'single-project', params: { slug: project.slug } }">
-                                        Vedi il project
-                                    </router-link>
+                                    <Popper arrow hover content="Buona Visione 🍿" placement="right">
+                                        <router-link class="btn btn-primary d-inline"
+                                            :to="{ name: 'single-project', params: { slug: project.slug } }">
+                                            Vedi il project
+                                        </router-link>
+                                    </Popper>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <!-- <i class="fa-regular fa-user"></i>
+                <i class="fa-regular fa-share-from-square"></i> -->
+                <div class="text-center py-3 d-inline-block">
+                    <Popper arrow hover openDelay="100" closeDelay="100" content="This is the Popper content 🍿">
+
+                        <button class="btn btn-primary">Popper! Provalo! </button>
+
+                    </Popper>
                 </div>
                 <div class="row mt-auto">
                     <div class="col ">
@@ -45,10 +56,11 @@
 
 <script>
 import axios from 'axios';
+import Popper from 'vue3-popper';
 import { store } from '../store';
 
 export default {
-    name: 'ProjectsList',
+    name: "ProjectsList",
     data() {
         return {
             store,
@@ -57,18 +69,15 @@ export default {
             lastPage: null,
             total: 0,
             contentMaxLen: 100
-        }
+        };
     },
     methods: {
         getProjects(pagenum) {
-
-
             // console.log(this.currentPage);
-
-            if (pagenum < 1) pagenum = this.lastPage;
-
-            if (pagenum > this.lastPage) pagenum = 1;
-
+            if (pagenum < 1)
+                pagenum = this.lastPage;
+            if (pagenum > this.lastPage)
+                pagenum = 1;
             axios.get(`${this.store.apiBaseUrl}/projects`, {
                 params: {
                     page: pagenum
@@ -80,12 +89,15 @@ export default {
                     this.currentPage = response.data.results.current_page;
                     this.lastPage = response.data.results.last_page;
                     this.total = response.data.results.total;
-                } else { this.$router.push({ name: 'not-found' }); }
-            })
+                }
+                else {
+                    this.$router.push({ name: "not-found" });
+                }
+            });
         },
         truncateContent(text) {
             if (text.length > this.contentMaxLen) {
-                return text.substr(0, this.contentMaxLen) + '...';
+                return text.substr(0, this.contentMaxLen) + "...";
             }
             return text;
         },
@@ -100,12 +112,32 @@ export default {
     },
     mounted() {
         this.getProjects(1);
-    }
-
+    },
+    components: { Popper }
 }
 </script>
 
 <style lang="scss" scoped>
+@use '../assets/style/partials/variables' as *;
+
+:deep(.popper) {
+    background: #126497;
+    padding: 20px;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+:deep(.popper #arrow::before) {
+    background: #126497;
+}
+
+:deep(.popper:hover),
+:deep(.popper:hover > #arrow::before) {
+    background: #279fe9
+}
+
 .v-enter-active,
 .v-leave-active {
     transition: opacity 0.5s ease;
@@ -116,6 +148,10 @@ export default {
     opacity: 0;
 }
 
+.card {
+    background-color: $main;
+}
+
 .card-text {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -124,6 +160,8 @@ export default {
     /* number of lines to show */
     line-clamp: 2;
     -webkit-box-orient: vertical;
+    color: $button-text;
+
 }
 
 .card-title {
@@ -134,6 +172,7 @@ export default {
     /* number of lines to show */
     line-clamp: 1;
     -webkit-box-orient: vertical;
+    color: $button-text !important;
 }
 
 .container {
