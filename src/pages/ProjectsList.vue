@@ -4,8 +4,8 @@
         <div class="row g-5">
             <div class="col-12 col-md-4" v-for="(project, index) in projects" :key="index">
                 <div class="card h-100" style="">
-                    <img :src="project.cover_image ? `${store.imagBasePath}${project.cover_image}` : ''"
-                        class="card-img-top" :alt="project.title">
+                    <!-- <img :src="project.cover_image ? `${store.imagBasePath}${project.cover_image}` : ''"
+                        class="card-img-top" :alt="project.title"> -->
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">{{ project.title }}</h5>
                         <p class="card-text" v-html="truncateContent(project.content)"></p>
@@ -42,6 +42,7 @@
 <script>
 import axios from 'axios';
 import { store } from '../store';
+
 export default {
     name: 'ProjectsList',
     data() {
@@ -58,8 +59,9 @@ export default {
         getProjects(pagenum) {
 
 
+            console.log(pagenum);
 
-            if (pagenum < 1) pagenum = 4;
+            if (pagenum < 1) pagenum = this.lastPage;
 
             if (pagenum > this.lastPage) pagenum = 1;
 
@@ -82,10 +84,15 @@ export default {
             return text;
         },
         next(n) {
-            this.getProjects(this.currentPage + n);
+            console.log(n);
+            let num = this.currentPage + n;
+            this.getProjects(num);
         },
         prev(n) {
-            this.getProjects(this.currentPage + n);
+
+            let num = this.currentPage + n
+            console.log(num);
+            this.getProjects(num);
 
         },
     },
