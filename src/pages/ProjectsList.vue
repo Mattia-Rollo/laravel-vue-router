@@ -1,41 +1,45 @@
 <template>
-    <section v-if="projects">
-        <h1>Lista dei project</h1>
-        <div class="row g-5">
-            <div class="col-12 col-md-4" v-for="(project, index) in projects" :key="index">
-                <div class="card h-100" style="">
-                    <!-- <img :src="project.cover_image ? `${store.imagBasePath}${project.cover_image}` : ''"
+    <section>
+        <Transition>
+            <div v-if="projects">
+                <h1>Lista dei project</h1>
+                <div class="row g-5">
+                    <div class="col-12 col-md-4" v-for="(project, index) in projects" :key="index">
+                        <div class="card h-100" style="">
+                            <!-- <img :src="project.cover_image ? `${store.imagBasePath}${project.cover_image}` : ''"
                         class="card-img-top" :alt="project.title"> -->
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">{{ project.title }}</h5>
-                        <p class="card-text" v-html="truncateContent(project.content)"></p>
-                        <div class=" mt-auto">
-                            <router-link class="btn btn-primary d-inline"
-                                :to="{ name: 'single-project', params: { slug: project.slug } }">
-                                Vedi il project
-                            </router-link>
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">{{ project.title }}</h5>
+                                <p class="card-text" v-html="project.content"></p>
+                                <div class=" mt-auto">
+                                    <router-link class="btn btn-primary d-inline"
+                                        :to="{ name: 'single-project', params: { slug: project.slug } }">
+                                        Vedi il project
+                                    </router-link>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="row py-3">
+                    <div class="col ">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination cursor-poiner">
+                                <li class="page-item"><a class="page-link" @click="prev(-1)">Previous</a></li>
+                                <li class="page-item" v-for="n in lastPage"><a class="page-link"
+                                        :class="[n == currentPage ? 'active' : '']" @click="getProjects(n)">{{
+                                            n
+                                        }}</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" @click="next(1)">next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row py-3">
-            <div class="col ">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination cursor-poiner">
-                        <li class="page-item"><a class="page-link" @click="prev(-1)">Previous</a></li>
-                        <li class="page-item" v-for="n in lastPage"><a class="page-link"
-                                :class="[n == currentPage ? 'active' : '']" @click="getProjects(n)">{{
-                                    n
-                                }}</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" @click="next(1)">next</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+        </Transition>
     </section>
 </template>
 
@@ -59,7 +63,7 @@ export default {
         getProjects(pagenum) {
 
 
-            console.log(pagenum);
+            // console.log(this.currentPage);
 
             if (pagenum < 1) pagenum = this.lastPage;
 
@@ -71,10 +75,12 @@ export default {
                 }
             }).then((response) => {
                 // console.log(response.data.results);
-                this.projects = response.data.results.data;
-                this.currentPage = response.data.results.current_page;
-                this.lastPage = response.data.results.last_page;
-                this.total = response.data.results.total;
+                if (response.data.success) {
+                    this.projects = response.data.results.data;
+                    this.currentPage = response.data.results.current_page;
+                    this.lastPage = response.data.results.last_page;
+                    this.total = response.data.results.total;
+                } else { this.$router.push({ name: 'not-found' }); }
             })
         },
         truncateContent(text) {
@@ -84,16 +90,12 @@ export default {
             return text;
         },
         next(n) {
-            console.log(n);
             let num = this.currentPage + n;
             this.getProjects(num);
         },
         prev(n) {
-
-            let num = this.currentPage + n
-            console.log(num);
+            let num = this.currentPage + n;
             this.getProjects(num);
-
         },
     },
     mounted() {
@@ -104,5 +106,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.5s ease;
+}
 
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
 </style>
