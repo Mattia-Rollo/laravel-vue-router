@@ -1,13 +1,13 @@
 <template>
     <section>
-        <div class="row">
-            <div class="col-12">
-                <h1 class="mt-5 mb-3">
-                    Contatti
-                </h1>
-                <ContactForm />
-            </div>
+        <div class="container">
+
+            <h1 class="py-2">
+                Contatti Us
+            </h1>
         </div>
+        <ContactForm />
+
     </section>
 </template>
 

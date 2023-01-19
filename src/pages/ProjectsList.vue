@@ -1,9 +1,9 @@
 <template>
     <section>
         <Transition>
-            <div v-if="projects">
-                <h1>Lista dei project</h1>
-                <div class="row g-5">
+            <div v-if="projects" class="container d-flex flex-column">
+                <h1 class="py-3">Lista dei project</h1>
+                <div class="row g-3">
                     <div class="col-12 col-md-4" v-for="(project, index) in projects" :key="index">
                         <div class="card h-100" style="">
                             <!-- <img :src="project.cover_image ? `${store.imagBasePath}${project.cover_image}` : ''"
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row py-3">
+                <div class="row ">
                     <div class="col ">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination cursor-poiner">

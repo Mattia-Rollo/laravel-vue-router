@@ -1,42 +1,44 @@
 <template>
-    <section class="contact_me py-5">
-        <div class="inner-wrapper">
-            <div class="container-fluid text-center">
-                <h2 class="text-uppercase">contact me</h2>
-                <div v-if="success" class="alert alert-success text-start" role="alert">
-                    Messaggio inviato con successo!
-                </div>
-                <div class="row">
-                    <form class="col-12 text-start needs-validation" novalidate @submit.prevent="sendForm()">
-                        <div class="mb-3">
-                            <input class="form-control " type="text" name="name" id="name" placeholder="Name"
-                                v-model="name" :class="{ 'is-invalid': errors.name }">
-                            <p v-if="!errors" class="valid-feedback">Bravo</p>
-                            <p v-for="(error, index) in errors.name" :key="index" class="invalid-feedback">
-                                {{ error }}
-                            </p>
-                        </div>
-                        <div class="mb-3">
-                            <input class="form-control" type="text" name="email" id="email" placeholder="Email"
-                                v-model="email" :class="{ 'is-invalid': errors.email }">
-                            <p v-for="(error, index) in errors.email" :key="index" class="invalid-feedback">
-                                {{ error }}
-                            </p>
 
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" name="message" id="message" cols="30" rows="10"
-                                placeholder="Message" v-model="message"
-                                :class="{ 'is-invalid': errors.message }"></textarea>
-                            <p v-for="(error, index) in errors.message" :key="index" class="invalid-feedback">
-                                {{ error }}
-                            </p>
-                        </div>
+    <section>
+        <div class="container-fluid text-center">
+            <div v-if="success" class="alert alert-success text-start" role="alert">
+                Messaggio inviato con successo!
+            </div>
+
+            <div class="">
+                <form class="row gy-4 text-start needs-validation" novalidate @submit.prevent="sendForm()">
+                    <div class="col-12 mb-1 position-relative">
+                        <input class="form-control " type="text" name="name" id="name" placeholder="Name" v-model="name"
+                            :class="{ 'is-invalid': errors.name }" required>
+                        <!-- <p class="valid-feedback">Bravo</p> -->
+
+                        <p v-for="(error, index) in errors.name" :key="index" class="invalid-tooltip">
+                            {{ error }}
+                        </p>
+                    </div>
+                    <div class="col-12 position-relative">
+                        <input class="form-control" type="text" name="email" id="email" placeholder="Email"
+                            v-model="email" :class="{ 'is-invalid': errors.email }">
+                        <p v-for="(error, index) in errors.email" :key="index" class="invalid-tooltip">
+                            {{ error }}
+                        </p>
+
+                    </div>
+                    <div class="col-12 position-relative">
+                        <textarea class="form-control" name="message" id="message" cols="30" rows="10"
+                            placeholder="Message" v-model="message"
+                            :class="{ 'is-invalid': errors.message }"></textarea>
+                        <p v-for="(error, index) in errors.message" :key="index" class="invalid-tooltip">
+                            {{ error }}
+                        </p>
+                    </div>
+                    <div>
                         <button class="btn btn-lg btn-primary text-white" type="submit" :disabled="loading">{{
                             loading? 'Sending...': 'Send'
                         }}</button>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -49,6 +51,7 @@ export default {
     name: 'ContactForm',
     data() {
         return {
+            show: false,
             store,
             name: '',
             email: '',
