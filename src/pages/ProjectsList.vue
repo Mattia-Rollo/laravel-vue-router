@@ -142,7 +142,7 @@ export default {
 
 .card:hover {
     transform: translateY(-5px);
-    box
+
 }
 
 .card-text {
