@@ -93,6 +93,17 @@ export default {
 <style lang="scss" scoped>
 @use '../assets/style/partials/variables' as *;
 
+// a {
+
+//     margin: 0 0.5rem;
+//     border-radius: 0.3rem;
+// }
+
+// a:hover:not(.navbar-brand) {
+//     background-color: $button;
+//     color: $headline;
+// }
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -106,6 +117,8 @@ export default {
         font-size: 3.5rem;
     }
 }
+
+
 
 .b-example-divider {
     height: 3rem;
@@ -144,11 +157,11 @@ export default {
     -webkit-overflow-scrolling: touch;
 }
 
-.navbar {
-    background-color: $main;
-}
+// .navbar {
+//     background-color: $main;
+// }
 
-i {
-    font-size: 3.2rem;
-}
+// i {
+//     font-size: 3.2rem;
+// }
 </style>

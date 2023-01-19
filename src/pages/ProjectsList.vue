@@ -133,14 +133,14 @@ export default {
     min-height: 20rem;
 }
 
-.card:not(.my-min-h) {
+.card {
 
     background-color: $main;
-    transition: all 0.5s;
+    transition: all 0.35s;
     cursor: pointer;
 }
 
-.card:hover {
+.card:hover:not(.my-min-h) {
     transform: translateY(-5px);
 
 }
