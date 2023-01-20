@@ -120,15 +120,16 @@ export default {
 
 
 
-// .v-enter-active,
-// .v-leave-active {
-//     transition: opacity 0.5s ease;
-// }
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.5s ease;
+}
 
-// .v-enter-from,
-// .v-leave-to {
-//     opacity: 0;
-// }
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
+
 .my-min-h {
     min-height: 20rem;
 }

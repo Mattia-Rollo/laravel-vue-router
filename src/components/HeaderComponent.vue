@@ -49,7 +49,7 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav ">
-                        <li class="nav-item fw-bolder" v-for="(item, index) in menuItems" :key="index">
+                        <li class="nav-item fs-5" v-for="(item, index) in menuItems" :key="index">
                             <router-link :to="{ name: item.routeName }" active-class="active" class="nav-link">
                                 {{ item.label }}
                             </router-link>
@@ -99,10 +99,7 @@ a {
     border-radius: 0.3rem;
 }
 
-a:hover:not(.navbar-brand) {
-    background-color: $button;
-    // color: $headline;
-}
+
 
 .bd-placeholder-img {
     font-size: 1.125rem;
