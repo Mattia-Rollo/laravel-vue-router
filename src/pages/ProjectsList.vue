@@ -49,6 +49,7 @@
 </template>
 
 <script>
+
 import axios from 'axios';
 
 import { store } from '../store';
@@ -154,7 +155,7 @@ export default {
     /* number of lines to show */
     line-clamp: 2;
     -webkit-box-orient: vertical;
-    color: $button-text;
+    // color: $button-text;
 
 }
 
@@ -166,7 +167,7 @@ export default {
     /* number of lines to show */
     line-clamp: 1;
     -webkit-box-orient: vertical;
-    color: $button-text !important;
+    // color: $button-text !important;
 }
 
 .container {
